@@ -1,0 +1,1 @@
+(()=>{var o={466:o=>{o.exports={format:function(){return"￥99.99"}}}},r={};function t(e){var n=r[e];if(void 0!==n)return n.exports;var s=r[e]={exports:{}};return o[e](s,s.exports,t),s.exports}(()=>{"use strict";const{format:o}=t(466);console.log(300),console.log(o())})()})();

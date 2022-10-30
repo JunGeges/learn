@@ -1,0 +1,20 @@
+$bgColor: red;
+$textDecoration: line-through;
+
+@mixin pad {
+  padding: 30px;
+  box-sizing: border-box;
+  
+
+}
+
+* {
+  margin: 0;
+  padding:0
+}
+
+.title {
+  @include pad;
+  background-color: $bgColor;
+  text-decoration: $textDecoration;
+}
