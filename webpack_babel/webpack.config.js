@@ -5,6 +5,8 @@ const { DefinePlugin } = require('webpack')
 // const { CopyWebpackPlugin } = require('copy-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
+  mode: 'development',
+  devtool: 'source-map',
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './build'),
@@ -51,19 +53,19 @@ module.exports = {
         test: /\.(png|jpg|jpeg|svg|gif)$/i,
         type: 'asset',
         generator: {
-          filename: "img/[name].[hash:6][ext]"
+          filename: 'img/[name].[hash:6][ext]'
         },
         parser: {
           dataUrlCondition: {
-            maxSize: 50 * 1024
+            maxSize: 10 * 1024
           }
         }
       },
       {
         test: /\.(eot|ttf|woff2?)$/i,
-        type: "asset/resource",
+        type: 'asset/resource',
         generator: {
-          filename: "font/[name]_[hash:6][ext]",
+          filename: 'font/[name]_[hash:6][ext]'
         }
       }
     ]
@@ -72,8 +74,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      title: "webpack_learn"
+      template: './public/index.html',
+      title: 'webpack_learn'
     }),
     new DefinePlugin({
       BASE_URL: "'./'"
@@ -82,13 +84,11 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: "public",
-          to: "./",
+          from: 'public',
+          to: './',
           globOptions: {
             // 忽略的文件-不复制
-            ignore: [
-              "**/index.html"
-            ]
+            ignore: ['**/index.html']
           }
         }
       ]
