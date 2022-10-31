@@ -14,6 +14,15 @@ module.exports = {
     path: path.resolve(__dirname, './build'),
     filename: 'js/bundle.js'
   },
+  // 打包模式 打包后的代码有差别
+  mode:"development",
+
+  devServer: {
+    open: true,
+    hot:true
+    // 去加载webpack没打包的（且被应用）内容
+    // contentBase: ''
+  },
   // 配置loader
   module: {
     rules: [
@@ -78,29 +87,34 @@ module.exports = {
   },
   // 配置插件
   plugins: [
+    // 删除打包文件
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
+    // 指定打包模板
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       title: "webpack_learn"
     }),
+    // webapck 内置插件 用来定义配置变量
     new DefinePlugin({
-      BASE_URL: "'./'"
+      BASE_URL: "'./'",
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false
     }),
     // 复制文件到打包目录
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: "public",
-          to: "./",
-          globOptions: {
-            // 忽略的文件-不复制
-            ignore: [
-              "**/index.html"
-            ]
-          }
-        }
-      ]
-    })
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: "public",
+    //       to: "./",
+    //       globOptions: {
+    //         // 忽略的文件-不复制
+    //         ignore: [
+    //           "**/index.html"
+    //         ]
+    //       }
+    //     }
+    //   ]
+    // })
   ]
 }

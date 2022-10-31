@@ -1,0 +1,10 @@
+.title {
+  color: #23234090;
+  /* font-weight: 600; */
+  font: 35px 微软雅黑;
+  user-select: none;
+  background-image: url('../img/pexels-photo-13313434.jpeg');
+  width: 200px;
+  height: 200px;
+  background-size: contain;
+}
